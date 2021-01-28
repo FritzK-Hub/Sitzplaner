@@ -40,5 +40,9 @@ func _input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 		
+	if event.is_action_pressed("close_program"):
+		get_tree().quit()
 
-
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		get_tree().quit() # default behavior

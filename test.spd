@@ -1,0 +1,24 @@
+{
+	"className": "Klasse 10b",
+	"students": [
+		[
+			"Kenny",
+			"Fritz",
+			""
+		],
+		[
+			"Kevin",
+			"Fritz",
+			"Kev"
+		],
+		[
+			"Mahershalalhashbaz",
+			"Mahershalalhashbaz",
+			"Kev"
+		],
+		[
+			"Hermann",
+			"Goote"
+		]
+	]
+}

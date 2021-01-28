@@ -1,22 +1,17 @@
-[
-  {
-    "className": "Klasse 10a",
-    "students": [
-      [
-        "Kenny",
-        "Fritz",
-        ""
-      ],
-      [
-        "Kevin",
-        "Fritz",
-        "Kev"
-      ],
-      [
-        "Mahershalalhashbaz",
-        "Mahershalalhashbaz",
-        "Kev"
-      ]
-    ]
-  }
-]
+{
+	"className": "Klasse 10a",
+	"students": [
+		[
+			[
+				"Kenny",
+				"Fritz"
+			],
+			[
+				"Kevin",
+				"Fritz"
+			],
+			7.650001,
+			0.65
+		]
+	]
+}

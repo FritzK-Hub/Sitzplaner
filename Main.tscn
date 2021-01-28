@@ -83,6 +83,7 @@ __meta__ = {
 }
 
 [node name="Class" type="VBoxContainer" parent="Viewport/Menu/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -91,12 +92,12 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Viewport/Menu/TabContainer/Class"]
-margin_right = 292.0
+margin_right = 291.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 200, 64 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Viewport/Menu/TabContainer/Class/VBoxContainer"]
-margin_right = 292.0
+margin_right = 291.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 
@@ -113,7 +114,7 @@ text = "Save"
 
 [node name="HSeparator2" type="HSeparator" parent="Viewport/Menu/TabContainer/Class/VBoxContainer"]
 margin_top = 36.0
-margin_right = 292.0
+margin_right = 291.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -121,7 +122,7 @@ __meta__ = {
 
 [node name="ClassnameLabel" type="LineEdit" parent="Viewport/Menu/TabContainer/Class/VBoxContainer"]
 margin_top = 44.0
-margin_right = 292.0
+margin_right = 291.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 0, 32 )
 custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
@@ -132,7 +133,7 @@ script = ExtResource( 3 )
 
 [node name="HSeparator" type="HSeparator" parent="Viewport/Menu/TabContainer/Class"]
 margin_top = 80.0
-margin_right = 292.0
+margin_right = 291.0
 margin_bottom = 84.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -140,7 +141,7 @@ __meta__ = {
 
 [node name="StudentScroll" type="ScrollContainer" parent="Viewport/Menu/TabContainer/Class"]
 margin_top = 88.0
-margin_right = 292.0
+margin_right = 291.0
 margin_bottom = 588.0
 rect_min_size = Vector2( 0, 500 )
 follow_focus = true
@@ -155,7 +156,7 @@ student_menu_resource = ExtResource( 10 )
 
 [node name="HSeparator2" type="HSeparator" parent="Viewport/Menu/TabContainer/Class"]
 margin_top = 592.0
-margin_right = 292.0
+margin_right = 291.0
 margin_bottom = 596.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -163,14 +164,14 @@ __meta__ = {
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Viewport/Menu/TabContainer/Class"]
 margin_top = 600.0
-margin_right = 292.0
+margin_right = 291.0
 margin_bottom = 632.0
 rect_min_size = Vector2( 180, 32 )
 alignment = 2
 
 [node name="firstname" type="LineEdit" parent="Viewport/Menu/TabContainer/Class/HBoxContainer2"]
-margin_left = 26.0
-margin_right = 139.0
+margin_left = 25.0
+margin_right = 138.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 113, 0 )
 placeholder_text = "Firstname"
@@ -179,8 +180,8 @@ __meta__ = {
 }
 
 [node name="lastname" type="LineEdit" parent="Viewport/Menu/TabContainer/Class/HBoxContainer2"]
-margin_left = 143.0
-margin_right = 256.0
+margin_left = 142.0
+margin_right = 255.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 113, 0 )
 placeholder_text = "Lastname"
@@ -189,8 +190,8 @@ __meta__ = {
 }
 
 [node name="Add" type="Button" parent="Viewport/Menu/TabContainer/Class/HBoxContainer2"]
-margin_left = 260.0
-margin_right = 292.0
+margin_left = 259.0
+margin_right = 291.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 hint_tooltip = "Add a student to the list"
@@ -198,7 +199,6 @@ text = "+"
 script = ExtResource( 11 )
 
 [node name="Settings" type="VBoxContainer" parent="Viewport/Menu/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -211,8 +211,8 @@ __meta__ = {
 }
 
 [node name="PositionMode" type="CheckBox" parent="Viewport/Menu/TabContainer/Settings"]
-margin_right = 290.0
-margin_bottom = 32.0
+margin_right = 291.0
+margin_bottom = 24.0
 pressed = true
 text = "Edit Mode"
 
@@ -229,15 +229,24 @@ margin_right = 290.0
 margin_bottom = 104.0
 
 [node name="HSlider" type="HSlider" parent="Viewport/Menu/TabContainer/Settings"]
-margin_top = 36.0
-margin_right = 290.0
-margin_bottom = 52.0
+margin_top = 28.0
+margin_right = 291.0
+margin_bottom = 44.0
 min_value = 0.5
 max_value = 2.0
 step = 0.1
 value = 1.0
-tick_count = 15
+tick_count = 13
 ticks_on_borders = true
+
+[node name="FontSlider" type="HSlider" parent="Viewport/Menu/TabContainer/Settings"]
+margin_top = 48.0
+margin_right = 291.0
+margin_bottom = 64.0
+min_value = 1.5
+max_value = 8.0
+step = 0.25
+value = 5.0
 
 [node name="MenuToggle" type="Button" parent="Viewport/Menu"]
 margin_left = -48.0
@@ -250,11 +259,15 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Editor" method="_on_Menu_file_loaded"]
 [connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Menu/TabContainer/Class/StudentScroll/StudentList" method="_on_Menu_file_loaded"]
 [connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Menu/TabContainer/Class/VBoxContainer/ClassnameLabel" method="_on_Menu_file_loaded"]
 [connection signal="pressed" from="Viewport/Menu/TabContainer/Class/VBoxContainer/HBoxContainer/Load" to="Viewport/Menu" method="_on_Load_pressed"]
+[connection signal="pressed" from="Viewport/Menu/TabContainer/Class/VBoxContainer/HBoxContainer/Save" to="Viewport/Menu" method="_on_Save_pressed"]
+[connection signal="text_changed" from="Viewport/Menu/TabContainer/Class/VBoxContainer/ClassnameLabel" to="Viewport/Menu" method="_on_ClassnameLabel_text_changed"]
 [connection signal="add_pressed" from="Viewport/Menu/TabContainer/Class/HBoxContainer2/Add" to="Viewport/Menu/TabContainer/Class/StudentScroll/StudentList" method="_on_Add_add_pressed"]
 [connection signal="pressed" from="Viewport/Menu/TabContainer/Class/HBoxContainer2/Add" to="Viewport/Menu/TabContainer/Class/HBoxContainer2/Add" method="_on_Add_pressed"]
 [connection signal="toggled" from="Viewport/Menu/TabContainer/Settings/PositionMode" to="Viewport/Menu/TabContainer/Settings" method="_on_PositionMode_toggled"]
 [connection signal="value_changed" from="Viewport/Menu/TabContainer/Settings/HSlider" to="Viewport/Menu/TabContainer/Settings" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="Viewport/Menu/TabContainer/Settings/FontSlider" to="Viewport/Menu/TabContainer/Settings" method="_on_FontSlider_value_changed"]
 [connection signal="pressed" from="Viewport/Menu/MenuToggle" to="Viewport/Menu" method="_on_MenuToggle_pressed"]
