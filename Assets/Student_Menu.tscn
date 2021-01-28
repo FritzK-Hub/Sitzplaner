@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Student_Menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Student_Dragging.tscn" type="PackedScene" id=2]
+
+[node name="Student" type="Control"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 275, 32 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dragable_student = ExtResource( 2 )
+
+[node name="StudentButton" type="Button" parent="."]
+margin_right = 275.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StudentButton"]
+margin_right = 275.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullname" type="Label" parent="StudentButton/HBoxContainer"]
+margin_right = 275.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 275, 32 )
+mouse_default_cursor_shape = 2
+text = "Kenny"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Firstname" type="Label" parent="StudentButton/HBoxContainer"]
+visible = false
+margin_left = 12.0
+margin_right = 279.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 267, 32 )
+mouse_default_cursor_shape = 2
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Lastname" type="Label" parent="StudentButton/HBoxContainer"]
+visible = false
+margin_left = 279.0
+margin_right = 554.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 275, 32 )
+mouse_default_cursor_shape = 2
+text = "Kenny"
+valign = 1
+autowrap = true
+clip_text = true
+[connection signal="button_down" from="StudentButton" to="." method="_on_StudentButton_button_down"]

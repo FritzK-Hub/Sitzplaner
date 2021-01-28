@@ -1,0 +1,260 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/Menu/BaseMenuNode.gd" type="Script" id=1]
+[ext_resource path="res://Editor.gd" type="Script" id=2]
+[ext_resource path="res://Class_name_label.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/JosefinSansBold-OVA7o.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Table.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MenuContainer.gd" type="Script" id=6]
+[ext_resource path="res://MenuToggle.gd" type="Script" id=7]
+[ext_resource path="res://Menu.gd" type="Script" id=8]
+[ext_resource path="res://StudentList.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Student_Menu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://AddStudentButton.gd" type="Script" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.866667, 0.745098, 0.662745, 1 )
+border_color = Color( 0.796078, 0.6, 0.494118, 1 )
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+outline_size = 1
+outline_color = Color( 0.658824, 0.501961, 0.407843, 1 )
+font_data = ExtResource( 4 )
+
+[node name="Main" type="Node2D"]
+
+[node name="Viewport" type="Control" parent="."]
+margin_right = 1920.0
+margin_bottom = 1024.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editor" type="Control" parent="Viewport"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+Table = ExtResource( 5 )
+
+[node name="EditorBackground" type="ColorRect" parent="Viewport/Editor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0.945098, 0.901961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Control" parent="Viewport"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 32.0
+margin_right = 0.00012207
+margin_bottom = 500.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBackground" type="Panel" parent="Viewport/Menu"]
+margin_left = 10.0
+margin_right = 300.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="Viewport/Menu"]
+margin_left = 10.0
+margin_right = 309.0
+margin_bottom = 624.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Class" type="VBoxContainer" parent="Viewport/Menu/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Viewport/Menu/TabContainer/Class"]
+margin_right = 291.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 200, 64 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Viewport/Menu/TabContainer/Class/VBoxContainer"]
+margin_right = 291.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="Load" type="Button" parent="Viewport/Menu/TabContainer/Class/VBoxContainer/HBoxContainer"]
+margin_right = 42.0
+margin_bottom = 32.0
+text = "Load"
+
+[node name="Save" type="Button" parent="Viewport/Menu/TabContainer/Class/VBoxContainer/HBoxContainer"]
+margin_left = 46.0
+margin_right = 87.0
+margin_bottom = 32.0
+text = "Save"
+
+[node name="HSeparator2" type="HSeparator" parent="Viewport/Menu/TabContainer/Class/VBoxContainer"]
+margin_top = 36.0
+margin_right = 291.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassnameLabel" type="LineEdit" parent="Viewport/Menu/TabContainer/Class/VBoxContainer"]
+margin_top = 44.0
+margin_right = 291.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 32 )
+custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+align = 1
+max_length = 32
+placeholder_text = "Classname"
+script = ExtResource( 3 )
+
+[node name="HSeparator" type="HSeparator" parent="Viewport/Menu/TabContainer/Class"]
+margin_top = 80.0
+margin_right = 291.0
+margin_bottom = 84.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StudentScroll" type="ScrollContainer" parent="Viewport/Menu/TabContainer/Class"]
+margin_top = 88.0
+margin_right = 291.0
+margin_bottom = 588.0
+rect_min_size = Vector2( 0, 500 )
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="StudentList" type="VBoxContainer" parent="Viewport/Menu/TabContainer/Class/StudentScroll"]
+margin_right = 280.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 280, 400 )
+script = ExtResource( 9 )
+student_menu_resource = ExtResource( 10 )
+
+[node name="HSeparator2" type="HSeparator" parent="Viewport/Menu/TabContainer/Class"]
+margin_top = 592.0
+margin_right = 291.0
+margin_bottom = 596.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Viewport/Menu/TabContainer/Class"]
+margin_top = 600.0
+margin_right = 291.0
+margin_bottom = 632.0
+rect_min_size = Vector2( 180, 32 )
+alignment = 2
+
+[node name="firstname" type="LineEdit" parent="Viewport/Menu/TabContainer/Class/HBoxContainer2"]
+margin_left = 25.0
+margin_right = 138.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 113, 0 )
+placeholder_text = "Firstname"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lastname" type="LineEdit" parent="Viewport/Menu/TabContainer/Class/HBoxContainer2"]
+margin_left = 142.0
+margin_right = 255.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 113, 0 )
+placeholder_text = "Lastname"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Add" type="Button" parent="Viewport/Menu/TabContainer/Class/HBoxContainer2"]
+margin_left = 259.0
+margin_right = 291.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Add a student to the list"
+text = "+"
+script = ExtResource( 11 )
+
+[node name="Settings" type="VBoxContainer" parent="Viewport/Menu/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PositionMode" type="CheckBox" parent="Viewport/Menu/TabContainer/Settings"]
+margin_right = 290.0
+margin_bottom = 32.0
+pressed = true
+text = "Edit Mode"
+
+[node name="CheckBox2" type="CheckBox" parent="Viewport/Menu/TabContainer/Settings"]
+visible = false
+margin_top = 36.0
+margin_right = 290.0
+margin_bottom = 68.0
+
+[node name="CheckBox3" type="CheckBox" parent="Viewport/Menu/TabContainer/Settings"]
+visible = false
+margin_top = 72.0
+margin_right = 290.0
+margin_bottom = 104.0
+
+[node name="HSlider" type="HSlider" parent="Viewport/Menu/TabContainer/Settings"]
+margin_top = 36.0
+margin_right = 290.0
+margin_bottom = 52.0
+min_value = 0.5
+max_value = 2.0
+step = 0.1
+value = 1.0
+tick_count = 15
+ticks_on_borders = true
+
+[node name="MenuToggle" type="Button" parent="Viewport/Menu"]
+margin_left = -48.0
+margin_right = -8.0
+margin_bottom = 40.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "|||"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Menu/TabContainer/Class/StudentScroll/StudentList" method="_on_Menu_file_loaded"]
+[connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Menu/TabContainer/Class/VBoxContainer/ClassnameLabel" method="_on_Menu_file_loaded"]
+[connection signal="pressed" from="Viewport/Menu/TabContainer/Class/VBoxContainer/HBoxContainer/Load" to="Viewport/Menu" method="_on_Load_pressed"]
+[connection signal="add_pressed" from="Viewport/Menu/TabContainer/Class/HBoxContainer2/Add" to="Viewport/Menu/TabContainer/Class/StudentScroll/StudentList" method="_on_Add_add_pressed"]
+[connection signal="pressed" from="Viewport/Menu/TabContainer/Class/HBoxContainer2/Add" to="Viewport/Menu/TabContainer/Class/HBoxContainer2/Add" method="_on_Add_pressed"]
+[connection signal="toggled" from="Viewport/Menu/TabContainer/Settings/PositionMode" to="Viewport/Menu/TabContainer/Settings" method="_on_PositionMode_toggled"]
+[connection signal="value_changed" from="Viewport/Menu/TabContainer/Settings/HSlider" to="Viewport/Menu/TabContainer/Settings" method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="Viewport/Menu/MenuToggle" to="Viewport/Menu" method="_on_MenuToggle_pressed"]
