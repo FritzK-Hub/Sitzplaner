@@ -17,7 +17,10 @@ _global_script_class_icons={
 
 config/name="Sitzplaner"
 run/main_scene="res://Main.tscn"
-boot_splash/bg_color=Color( 0.941176, 0.937255, 0.921569, 1 )
+boot_splash/image="res://boot_splash.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 1, 0.945098, 0.901961, 1 )
 config/icon="res://icon.png"
 
 [autoload]
