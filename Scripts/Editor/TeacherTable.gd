@@ -25,14 +25,7 @@ var current_students: Array
 func _ready():
 	$Control/Background.connect("mouse_entered", self, "_on_mouse_entered")
 	$Control/Background.connect("mouse_exited",  self, "_on_mouse_exited")
-	student_left = load(student_resource.resource_path).instance()
-	student_right = load(student_resource.resource_path).instance()
 	
-	$Control.add_child(student_left)	
-	$Control.add_child(student_right)
-	
-	connect("table_resize", student_left, "_on_table_resize")
-	connect("table_resize", student_right, "_on_table_resize")
 		
 	
 func set_student_left_name(name):
@@ -44,16 +37,6 @@ func _on_window_resize():
 	var g_scale = Global._editor_scale
 	var g_size	= g_scale * 0.78
 	
-	student_left.get_child(0).rect_size      = Vector2(g_size, g_size)
-	student_left.get_child(0).rect_position  = Vector2(-g_size/2, -g_size/2)
-	student_right.get_child(0).rect_size     = Vector2(g_size, g_size)
-	student_right.get_child(0).rect_position = Vector2(-g_size/2, -g_size/2)
-	
-	student_left.rect_position = Vector2(g_scale/2, g_scale/2)
-	student_right.rect_position = Vector2(g_scale*1.5, g_scale/2)
-	
-	student_left.get_child(0).get_child(0).rect_size      = Vector2(g_size, g_size)
-	student_right.get_child(0).get_child(0).rect_size     = Vector2(g_size, g_size)
 	
 	
 	$Control.rect_size = Vector2(g_scale * 2, g_scale)
@@ -66,24 +49,6 @@ func _on_window_resize():
 	temp_y = clamp(temp_y, Global._editor_scale/2, Global._editor_size.y - Global._editor_scale/2)
 	
 	self.position = Vector2(temp_x, temp_y)
-	
-	
-	var new_students = [current_students[0], current_students[1], relative_position.x, relative_position.y]
-	
-	for i in range(Serializer._table_list.size()):
-		var firstname_one = Serializer._table_list[i][0][0]
-		var firstname_two = Serializer._table_list[i][1][0]
-		var lastname_one = Serializer._table_list[i][0][1]
-		var lastname_two = Serializer._table_list[i][1][1]
-		
-		var current_firstname_one = current_students[0][0]
-		var current_firstname_two = current_students[1][0]
-		var current_lastname_one = current_students[0][1]
-		var current_lastname_two = current_students[1][1]
-		
-		if firstname_one == current_firstname_one && firstname_two == current_firstname_two && lastname_one == current_lastname_one && lastname_two == current_lastname_two:
-			Serializer._table_list[i] = new_students
-	
 	
 	emit_signal("table_resize", [g_size])
 
@@ -117,9 +82,7 @@ func _input(event):
 		
 	if wheel_down && entered && edit:
 		rotater(rotater_degrees)
-		
-	if entered && modifier && button_right_released && edit:
-		emit_signal("remove_table", [self, id])
+	
 		
 func mover(pos: Vector2) -> void:
 	relative_position = pos
@@ -145,8 +108,6 @@ func update_students(student_par: Array) -> void:
 		
 func rotater(degrees) -> void:
 	self.rotate(deg2rad(degrees))
-	student_left.rect_rotation -= degrees
-	student_right.rect_rotation -= degrees
 		
 func _on_mouse_entered():
 	mouse_entered_event = true

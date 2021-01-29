@@ -48,7 +48,9 @@ func _on_file_selected(path_to_selected_file: String) -> void:
 	
 func file_content_to_serializer() -> void:
 	Serializer._className = json_parse_result.get("className")
+	Serializer._table_list = json_parse_result.get("tables")
 	Serializer._student_list = json_parse_result.get("students")
+	
 	print(Serializer._student_list)
 
 
@@ -67,11 +69,13 @@ func _on_Save_pressed():
 func _on_save_file_selected(selected_file_path: String) -> void:
 	var c_name = Serializer._className
 	var student_list = Serializer._student_list
+	var table_list = Serializer._table_list
 	
 	#var base_arr = []
 	
 	var dict = {"className":c_name}
 	
+	dict["tables"] = table_list
 	dict["students"] = student_list
 	
 	#base_arr.append(dict)

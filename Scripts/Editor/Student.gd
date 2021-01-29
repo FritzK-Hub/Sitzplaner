@@ -35,8 +35,9 @@ func _input(event):
 	var drag_mode				= Global._drag_mode
 	
 	if entered && !edit && !Global._switched:
-		print("released")
+		var old_student = $StudentButton/Label.text
 		$StudentButton/Label.text = Global._current_student.get_node("./StudentButton/HBoxContainer/Name").text
+		get_parent().get_parent().call("update_students", [$StudentButton/Label.text, old_student])
 		Global._switched = true
 	
 func _on_table_resize(size) -> void:

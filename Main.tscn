@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Menu/BaseMenuNode.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Editor/Editor.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scripts/Menu/StudentList.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Student_Menu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scripts/Menu/AddStudentButton.gd" type="Script" id=11]
+[ext_resource path="res://Assets/TeacherTable.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.866667, 0.745098, 0.662745, 1 )
@@ -44,6 +45,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 Table = ExtResource( 5 )
+TeacherTable = ExtResource( 12 )
 
 [node name="EditorBackground" type="ColorRect" parent="Viewport/Editor"]
 anchor_right = 1.0
@@ -83,7 +85,6 @@ __meta__ = {
 }
 
 [node name="Class" type="VBoxContainer" parent="Viewport/Menu/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -199,6 +200,7 @@ text = "+"
 script = ExtResource( 11 )
 
 [node name="Settings" type="VBoxContainer" parent="Viewport/Menu/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -259,8 +261,8 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Editor" method="_on_Menu_file_loaded"]
 [connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Menu/TabContainer/Class/StudentScroll/StudentList" method="_on_Menu_file_loaded"]
+[connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Editor" method="_on_Menu_file_loaded"]
 [connection signal="file_loaded" from="Viewport/Menu" to="Viewport/Menu/TabContainer/Class/VBoxContainer/ClassnameLabel" method="_on_Menu_file_loaded"]
 [connection signal="pressed" from="Viewport/Menu/TabContainer/Class/VBoxContainer/HBoxContainer/Load" to="Viewport/Menu" method="_on_Load_pressed"]
 [connection signal="pressed" from="Viewport/Menu/TabContainer/Class/VBoxContainer/HBoxContainer/Save" to="Viewport/Menu" method="_on_Save_pressed"]
