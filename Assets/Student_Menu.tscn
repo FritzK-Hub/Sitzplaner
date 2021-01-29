@@ -16,6 +16,8 @@ dragable_student = ExtResource( 2 )
 [node name="StudentButton" type="Button" parent="."]
 margin_right = 275.0
 margin_bottom = 32.0
+hint_tooltip = "You can drag'n'drop the items
+in this list onto tables in the scene"
 __meta__ = {
 "_edit_use_anchors_": false
 }

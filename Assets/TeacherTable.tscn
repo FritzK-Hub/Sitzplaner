@@ -19,6 +19,8 @@ __meta__ = {
 [node name="Background" type="Panel" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+hint_tooltip = "Control+Left Mouse Button: Add table
+Control+Right Mouse Button: Remove table"
 mouse_default_cursor_shape = 2
 __meta__ = {
 "_edit_use_anchors_": false
